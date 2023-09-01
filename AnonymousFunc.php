@@ -17,9 +17,16 @@ function sum($num)
     return $num + 2;
 }
 
+
+// استفاده از فانکشن ناشناس
 var_dump(map($list, function ($num) {
     return $num * 2;
 }));
 
 
+// arrow function ballaee
+var_dump(map($list, fn($num)=>$num * 2));
+
+
+// استفاده از فانکشن سام بالا
 var_dump((map($list,'sum')));
