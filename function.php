@@ -1,6 +1,10 @@
 <?php
 
-function name ($a,$b=0){
+declare(strict_types=1);
+
+
+
+function name (int $a,$b=0): array{
    $c=$a+$b;
    $d=$a*$b;
    $e=$a/$b;
