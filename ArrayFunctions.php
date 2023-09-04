@@ -85,8 +85,9 @@ var_dump(array_unique($list4));
 var_dump(array_slice($list4,2,1));
 
 
+//چک کردن یک کی در یک آرایه
 
-
+var_dump(isset($list['cont']));
 
 
 
