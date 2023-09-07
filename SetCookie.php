@@ -13,10 +13,14 @@ setcookie(
 
 
 
-var_dump(isset($_COOKIE['siteName']),$_COOKIE)
+var_dump(isset($_COOKIE['siteName']),$_COOKIE);
 
 
-
-
-
-?>
+//برای پاک کردن کوکی شما باید زمان باطل شدن رو کمتر از زمان حالتون بدید به شکل زیر
+// setcookie(
+//     'siteName',
+//     '',
+//     [
+//         'expires'=>time()-3600,
+//     ]
+//     );
