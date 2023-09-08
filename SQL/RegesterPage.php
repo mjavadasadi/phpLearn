@@ -15,7 +15,7 @@ function get_error($field) {
 }
 
 $errors = [];
-
+$success = false;
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = request('email');
@@ -32,7 +32,23 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if(! is_null($email) && ! is_null($password) && strlen($password) >= 6) {
-        echo 'save user data into user table';
+        $link = mysqli_connect('localhost:3306' , 'root' , '');
+        if(! $link) {
+            echo 'could not connect : ' . mysqli_connect_error();
+            exit;
+        }
+
+        mysqli_select_db($link , 'mjavadasadi');
+
+        $SQL = "insert into users (email , password ) values ('{$email}' , '{$password}')";
+
+        if( $result = mysqli_query($link , $SQL) ) {
+            $success = true;
+        } else {
+            echo 'error : ' . mysqli_error($link);
+            exit;
+        }
+
     }
 
 }
@@ -46,6 +62,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     <body>
         <h3>Register Page</h3>
         <br>
+        <?php if($success) { ?>
+            <span>اطلاعات شما با موفقیت ثبت شد</span>
+        <?php } ?>
         <form action="/SQL/RegesterPage.php" method="post">
             <label for="">email : </label>
             <input type="email" name="email"><br>
